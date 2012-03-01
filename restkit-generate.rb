@@ -24,9 +24,9 @@ header =
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
-           
+
 @interface #{model_name} : NSObject\n\n"
-  
+
 source =
 "//
 //  #{model_name}.m
@@ -50,7 +50,7 @@ ARGV.each do |arg|
   type = a.split(":")[1]
   header += "@property (nonatomic, strong) #{type} *#{name};\n"
   
-  source_content << "   @\"#{original_name}\", @\"#{name}\""
+  source_content << "	 @\"#{original_name}\", @\"#{name}\""
   synthesize << name
 end
 
@@ -58,12 +58,12 @@ source += "\n\n@synthesize #{synthesize.join(", ")};"
 
 source += "\n\n+ (RKObjectMapping *)getMapping 
 {
-  RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[#{model_name} class]];
-  [mapping mapKeyPathsToAttributes:\n"
+	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[#{model_name} class]];
+	[mapping mapKeyPathsToAttributes:\n"
 
 source += source_content.join(",\n")
 source += ", nil];
-  return mapping;
+	return mapping;
 }\n"
 
 header += "\n+ (RKObjectMapping *)getMapping;\n\n@end"
