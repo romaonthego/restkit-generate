@@ -1,8 +1,8 @@
 # restkit-generate
 
-A model generator for iOS RestKit (Rails-like)
+A model generator for iOS RestKit (Rails-like), ARC compliant
 
-## Usage
+## Sample usage
 
 `$ ./restkit-generate.rb model Business id:NSNumber address:NSString created_at:NSDate updated_at:NSDate`
 
@@ -53,3 +53,7 @@ and `Business.m`
 
 @end
 ```
+
+## Copyright
+
+Copyright (c) 2012 Roman Efimov
