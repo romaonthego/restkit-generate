@@ -23,7 +23,7 @@ It produces 2 files:
 @property (nonatomic, strong) NSDate *createdAt;
 @property (nonatomic, strong) NSDate *updatedAt;
 
-+ (RKObjectMapping *)getMapping;
++ (RKObjectMapping *)objectMapping;
 
 @end
 ```
@@ -40,7 +40,7 @@ and `Business.m`
 
 @synthesize businessId, address, createdAt, updatedAt;
 
-+ (RKObjectMapping *)getMapping 
++ (RKObjectMapping *)objectMapping 
 {
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[Business class]];
 	[mapping mapKeyPathsToAttributes:

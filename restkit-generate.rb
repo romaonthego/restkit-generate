@@ -56,7 +56,7 @@ end
 
 source += "\n\n@synthesize #{synthesize.join(", ")};"
 
-source += "\n\n+ (RKObjectMapping *)getMapping 
+source += "\n\n+ (RKObjectMapping *)objectMapping 
 {
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[#{model_name} class]];
 	[mapping mapKeyPathsToAttributes:\n"
@@ -66,7 +66,7 @@ source += ", nil];
 	return mapping;
 }\n"
 
-header += "\n+ (RKObjectMapping *)getMapping;\n\n@end"
+header += "\n+ (RKObjectMapping *)objectMapping;\n\n@end"
 source += "\n@end"
 
 File.open("#{model_name}.h", 'w') {|f| f.write(header) }
