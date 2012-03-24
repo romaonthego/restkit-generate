@@ -4,7 +4,7 @@ A model generator for iOS RestKit (Rails-like), ARC compliant
 
 ## Sample usage
 
-`$ ./restkit-generate model Business id:NSNumber address:NSString created_at:NSDate updated_at:NSDate`
+`$ ./restkit-generate model Business id:NSNumber title:NSString address:NSString created_at:NSDate updated_at:NSDate`
 
 It produces 2 files:
 `BaseBusiness.h`
