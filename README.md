@@ -79,6 +79,8 @@ and `BaseBusiness.m`
 @end
 ```
 
+Include these files with your project and inherit a `Business` object from `BaseBusiness` where you can implement additional calls/methods. You can rebuild BaseBusiness anytime (in case you add/remove fields, etc.) so your main logic in the Business model won't be affected.
+
 ## Copyright
 
 Copyright (c) 2012 Roman Efimov
