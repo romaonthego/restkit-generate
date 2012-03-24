@@ -34,5 +34,3 @@ end
 
 Generator::Header.make
 Generator::MakeFile.make
-
-#puts Generator::complile_header("test", "test")
