@@ -4,6 +4,7 @@ module Generator
     
     def self.make
       model_name = Generator.config[:model_name]
+      prefix = Generator.config[:prefix]
       synthesize = []
       mapping = []
       decoders = []
@@ -15,11 +16,11 @@ module Generator
       
       source =
         "//\n"+
-        "//  Base#{model_name}.m\n"+
+        "//  #{prefix}#{model_name}.m\n"+
         "//\n\n"+
 
-        "#import \"Base#{model_name}.h\n\n"+
-        "@implementation Base#{model_name}\n\n"+
+        "#import \"#{prefix}#{model_name}.h\n\n"+
+        "@implementation #{prefix}#{model_name}\n\n"+
         "@synthesize "+synthesize.join(", ")+";\n\n"+
         "+ (RKObjectMapping *)objectMapping\n"+
         "{\n"+
@@ -30,7 +31,7 @@ module Generator
         
         "- (id)initWithCoder:(NSCoder *)coder\n"+
         "{\n"+
-        "	self = [[Base#{model_name} alloc] init];\n"+
+        "	self = [[#{prefix}#{model_name} alloc] init];\n"+
         "	if (self) {\n"+
         encoders.join("\n")+"\n"+
         "	}\n"+
@@ -48,7 +49,7 @@ module Generator
         puts source
       end
       
-      File.open("Base#{model_name}.m", 'w') {|f| f.write(source) }
+      File.open("#{prefix}#{model_name}.m", 'w') {|f| f.write(source) }
     end
     
   end
