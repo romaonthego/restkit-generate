@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+require 'optparse'
+require 'generator'
+
+options = {}
+
+optparse = OptionParser.new do |opts|
+  opts.banner = "Usage: restkit-generate model NAME [field:type field:type] [options]"
+  
+  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+    options[:verbose] = v
+  end
+end
+
+begin
+  optparse.parse!
+rescue OptionParser::InvalidOption, OptionParser::MissingArgument
+  puts optparse
+  exit
+end
+
+Generator.configure(options)
+
+begin
+  Generator.validate!
+rescue ArgumentError => error
+  puts error
+  exit
+end
+
+Generator::Header.make
+Generator::MakeFile.make
+
+#puts Generator::complile_header("test", "test")
