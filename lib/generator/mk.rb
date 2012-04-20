@@ -19,7 +19,7 @@ module Generator
         "//  #{prefix}#{model_name}.m\n"+
         "//\n\n"+
 
-        "#import \"#{prefix}#{model_name}.h\n\n"+
+        "#import \"#{prefix}#{model_name}.h\"\n\n"+
         "@implementation #{prefix}#{model_name}\n\n"+
         "@synthesize "+synthesize.join(", ")+";\n\n"+
         "+ (RKObjectMapping *)objectMapping\n"+
@@ -27,6 +27,7 @@ module Generator
         "	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[self class]];\n"+
         "	[mapping mapKeyPathsToAttributes:\n"+
         mapping.join(",\n")+", nil];\n"+
+        "	return mapping;\n"+
         "}\n\n"+
         
         "- (id)initWithCoder:(NSCoder *)coder\n"+
