@@ -1,7 +1,5 @@
 module Generator
-  
   module Header
-    
     def self.make
       props = []
       model_name = Generator.config[:model_name]
@@ -25,7 +23,5 @@ module Generator
       
       File.open("#{prefix}#{model_name}.h", 'w') {|f| f.write(header) }
     end
-    
   end
-  
 end

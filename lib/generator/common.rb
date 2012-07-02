@@ -5,11 +5,11 @@ module Generator
   def self.configure(options)
     @@config = options
     if options[:prefix].nil?
-			@@config[:prefix] = "Base"
+      @@config[:prefix] = "Base"
     else
-			if !options[:prefix]
-				@@config[:prefix] = ""
-			end
+      if !options[:prefix]
+        @@config[:prefix] = ""
+      end
     end
   end
   

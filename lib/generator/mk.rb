@@ -1,7 +1,5 @@
 module Generator
-  
   module MakeFile
-    
     def self.make
       model_name = Generator.config[:model_name]
       prefix = Generator.config[:prefix]
@@ -32,7 +30,7 @@ module Generator
         
         "- (id)initWithCoder:(NSCoder *)coder\n"+
         "{\n"+
-        "	self = [[#{prefix}#{model_name} alloc] init];\n"+
+        "	self = [[[self class] alloc] init];\n"+
         "	if (self) {\n"+
         encoders.join("\n")+"\n"+
         "	}\n"+
@@ -52,7 +50,5 @@ module Generator
       
       File.open("#{prefix}#{model_name}.m", 'w') {|f| f.write(source) }
     end
-    
   end
-  
 end

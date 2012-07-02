@@ -56,7 +56,7 @@ and `BaseBusiness.m`
 
 - (id)initWithCoder:(NSCoder *)coder
 {
-	self = [[BaseBusiness alloc] init];
+	self = [[[self class] alloc] init];
 	if (self) {
 		self.businessId = [coder decodeObjectForKey:@"businessId"];
 		self.title = [coder decodeObjectForKey:@"title"];
