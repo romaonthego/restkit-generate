@@ -9,6 +9,7 @@ module Generator
       header =
         "//\n"+ 
         "//  #{prefix}#{model_name}.h\n"+
+        "//  Command: #{$0} model #{model_name} #{ARGV.join( ' ' )}\n"+
         "//\n\n"+
         "#import <Foundation/Foundation.h>\n"+
         "#import <RestKit/RestKit.h>\n\n"+
