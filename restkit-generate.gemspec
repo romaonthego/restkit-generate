@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
     "lib/generator.rb",
     "lib/generator/common.rb",
     "lib/generator/header.rb",
-		"lib/generator/mk.rb"
+    "lib/generator/mk.rb"
   ]
   s.homepage = %q{https://github.com/romaonthego}
   s.rdoc_options = ["--charset=UTF-8"]
