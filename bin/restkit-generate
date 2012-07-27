@@ -33,7 +33,7 @@ rescue OptionParser::InvalidOption, OptionParser::MissingArgument
   exit
 end
 
-if ARGV.length == 0
+if ARGV.empty?
   puts optparse
   exit
 end
