@@ -6,6 +6,12 @@ A model generator for iOS RestKit (Rails-like), ARC compliant
 
 `$ ./restkit-generate model Business id:NSNumber title:NSString address:NSString created_at:NSDate updated_at:NSDate`
 
+## Installation
+
+Install via rubygems
+
+`gem install restkit-generate`
+
 It produces 2 files:
 `BaseBusiness.h`
 
