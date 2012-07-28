@@ -11,6 +11,7 @@ Make sure you have Ruby installed. This guide assumes you have one of the suppor
 * Ruby 1.9.3
 
 Install the gem via RubyGems:
+
 `$ gem install restkit-generate`
 
 ## Sample usage
