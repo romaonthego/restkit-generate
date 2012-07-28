@@ -4,9 +4,15 @@ A model generator for iOS RestKit (Rails-like), ARC compliant
 
 ## Installation
 
-Install via rubygems
+Make sure you have Ruby installed. This guide assumes you have one of the supported Ruby implementations installed:
 
-`gem install restkit-generate`
+* Ruby 1.8.7
+* Ruby 1.9.2
+* Ruby 1.9.3
+
+Install the gem via RubyGems:
+
+`$ gem install restkit-generate`
 
 ## Sample usage
 
@@ -85,7 +91,7 @@ and `BaseBusiness.m`
 @end
 ```
 
-Include these files with your project and inherit a `Business` object from `BaseBusiness` where you can implement additional calls/methods. You can rebuild `BaseBusiness` anytime (in case you add/remove fields, etc.) so your main logic in the `Business` model won't be affected. Run with `--prefix` to remove `Base` prefix or your can set your own with command `-p PREFIX`.
+Include these files with your project and inherit a `Business` object from `BaseBusiness` where you can implement additional calls/methods. You can rebuild `BaseBusiness` anytime (in case you add/remove fields, etc.) so your main logic in the `Business` model won't be affected. Run with `--no-prefix` to remove `Base` prefix or your can set your own with command `-p PREFIX`.
 
 ## ARC
 `restkit-generate` outputs files that use ARC. If you are not using ARC in your Xcode project, add `-fobjc-arc` as a compiler flag.
