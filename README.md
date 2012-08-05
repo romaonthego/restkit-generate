@@ -1,6 +1,6 @@
 # restkit-generate
 
-A model generator for iOS RestKit (Rails-like), ARC compliant
+A model generator for iOS RestKit (Rails-like), ARC compliant. Xcode 4.4+ is required.
 
 ## Installation
 
@@ -52,8 +52,6 @@ and `BaseBusiness.m`
 #import "BaseBusiness.h
 
 @implementation BaseBusiness
-
-@synthesize businessId, title, address, createdAt, updatedAt;
 
 + (RKObjectMapping *)objectMapping
 {
