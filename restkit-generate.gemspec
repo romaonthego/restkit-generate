@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
   s.name = "restkit-generate"
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Roman Efimov"]
-  s.date = %q{2012-07-26}
+  s.date = %q{2012-08-04}
   s.default_executable = %q{restkit-generate}
-  s.description = %q{A model generator for iOS RestKit (Rails-like), ARC compliant}
+  s.description = %q{A model generator for iOS RestKit (Rails-like)}
   s.email = %q{romefimov@gmail.com}
   s.executables = ["restkit-generate"]
   s.files = [
