@@ -39,7 +39,7 @@ module Generator
 
     ARGV.each do |arg|
       original_name = arg.split(":")[0]
-      a = arg.gsub(/_([a-z])/) do |word|
+      a = arg.gsub(/\./, '_').gsub(/_([a-z])/) do |word|
         word.gsub(/_/, "").capitalize
       end
 
