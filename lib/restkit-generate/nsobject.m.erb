@@ -1,0 +1,32 @@
+//
+//  <%= prefix %><%= model_name %>.m
+//
+
+#import "<%= prefix %><%= model_name %>.h"
+
+@implementation <%= prefix %><%= model_name %>
+
++ (RKObjectMapping *)objectMapping
+{
+<%= "\t" %>RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[self class]];
+<%= "\t" %>[mapping mapKeyPathsToAttributes:
+<%= mapping.join(",\n") %>
+<%= "\t" %>nil];
+<%= "\t" %>return mapping;
+}
+
+- (id)initWithCoder:(NSCoder *)coder
+{
+<%= "\t" %>self = [[[self class] alloc] init];
+<%= "\t" %>if (self) {
+<%= encoders.join("\n") %>
+<%= "\t" %>}
+<%= "\t" %>return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+<%= decoders.join("\n") %>
+}
+
+@end

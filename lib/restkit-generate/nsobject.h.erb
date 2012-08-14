@@ -1,0 +1,15 @@
+//
+//  <%= prefix %><%= model_name %>.h
+//  Command: <%= $0 %> model <%= model_name %> <%= ARGV.join( ' ' ) %>
+//
+
+#import <Foundation/Foundation.h>
+#import <RestKit/RestKit.h>
+
+@interface <%= prefix %><%= model_name %> : NSObject <NSCoding>
+
+<%= props.join("\n") %>
+
++ (RKObjectMapping *)objectMapping;
+
+@end
