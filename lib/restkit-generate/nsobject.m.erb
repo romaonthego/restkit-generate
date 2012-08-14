@@ -8,20 +8,20 @@
 
 + (RKObjectMapping *)objectMapping
 {
-<%= "\t" %>RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[self class]];
-<%= "\t" %>[mapping mapKeyPathsToAttributes:
+    RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[self class]];
+    [mapping mapKeyPathsToAttributes:
 <%= mapping.join(",\n") %>
-<%= "\t" %>nil];
-<%= "\t" %>return mapping;
+    nil];
+    return mapping;
 }
 
 - (id)initWithCoder:(NSCoder *)coder
 {
-<%= "\t" %>self = [[[self class] alloc] init];
-<%= "\t" %>if (self) {
+    self = [[[self class] alloc] init];
+    if (self) {
 <%= encoders.join("\n") %>
-<%= "\t" %>}
-<%= "\t" %>return self;
+    }
+    return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder

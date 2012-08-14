@@ -6,9 +6,10 @@ module RestKitGenerate
       mapping = []
       decoders = []
       encoders = []
-      RestKitGenerate.properties.each{|key, value| mapping << "\t@\"#{value[:original_name]}\", @\"#{key}\"" }
-      RestKitGenerate.properties.each{|key, value| decoders << "\t[coder encodeObject:self.#{key} forKey:@\"#{key}\"];" }
-      RestKitGenerate.properties.each{|key, value| encoders << "\t\tself.#{key} = [coder decodeObjectForKey:@\"#{key}\"];" }
+      tab = "    "
+      RestKitGenerate.properties.each{|key, value| mapping << "#{tab}@\"#{value[:original_name]}\", @\"#{key}\"" }
+      RestKitGenerate.properties.each{|key, value| decoders << "#{tab}[coder encodeObject:self.#{key} forKey:@\"#{key}\"];" }
+      RestKitGenerate.properties.each{|key, value| encoders << "#{tab}#{tab}self.#{key} = [coder decodeObjectForKey:@\"#{key}\"];" }
 
       erb = ERB.new(File.read(File.join('..', 'lib', 'restkit-generate', 'nsobject.m.erb')))
       result = erb.result(binding)
