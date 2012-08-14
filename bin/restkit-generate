@@ -5,7 +5,8 @@ lib = File.expand_path(File.dirname(THIS_FILE) + '/../lib')
 $LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
 
 require 'optparse'
-require 'generator'
+require 'erb'
+require 'restkit-generate'
 
 options = {}
 
@@ -38,14 +39,14 @@ if ARGV.empty?
   exit
 end
 
-Generator.configure(options)
+RestKitGenerate.configure(options)
 
 begin
-  Generator.validate!
+  RestKitGenerate.validate!
 rescue ArgumentError => error
   puts error
   exit
 end
 
-Generator::Header.make
-Generator::MakeFile.make
+RestKitGenerate::Header.make
+RestKitGenerate::MakeFile.make

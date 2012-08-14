@@ -1,14 +1,14 @@
-module Generator
+module RestKitGenerate
   module MakeFile
     def self.make
-      model_name = Generator.config[:model_name]
-      prefix = Generator.config[:prefix]
+      model_name = RestKitGenerate.config[:model_name]
+      prefix = RestKitGenerate.config[:prefix]
       mapping = []
       decoders = []
       encoders = []
-      Generator.properties.each{|key, value| mapping << "	@\"#{value[:original_name]}\", @\"#{key}\"" }
-      Generator.properties.each{|key, value| decoders << "	[coder encodeObject:self.#{key} forKey:@\"#{key}\"];" }
-      Generator.properties.each{|key, value| encoders << "		self.#{key} = [coder decodeObjectForKey:@\"#{key}\"];" }
+      RestKitGenerate.properties.each{|key, value| mapping << "	@\"#{value[:original_name]}\", @\"#{key}\"" }
+      RestKitGenerate.properties.each{|key, value| decoders << "	[coder encodeObject:self.#{key} forKey:@\"#{key}\"];" }
+      RestKitGenerate.properties.each{|key, value| encoders << "		self.#{key} = [coder decodeObjectForKey:@\"#{key}\"];" }
 
       source =
         "//\n"+
@@ -41,7 +41,7 @@ module Generator
 
         "@end"
 
-      if Generator.config[:verbose]
+      if RestKitGenerate.config[:verbose]
         puts source
       end
 

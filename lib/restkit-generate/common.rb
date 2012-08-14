@@ -1,4 +1,4 @@
-module Generator
+module RestKitGenerate
   @@config = {}
   @@properties = {}
 
