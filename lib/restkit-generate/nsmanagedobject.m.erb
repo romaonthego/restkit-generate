@@ -1,0 +1,27 @@
+//
+//  <%= prefix %><%= model_name %>.m
+//
+
+#import "<%= prefix %><%= model_name %>.h"
+
+@implementation <%= prefix %><%= model_name %>
+
+@dynamic <%= dynamic.join(", ") %>;
+
++ (RKManagedObjectMapping *)objectMapping
+{
+    RKManagedObjectMapping* mapping = [RKManagedObjectMapping mappingForClass:[self class] inManagedObjectStore:[RKObjectManager sharedManager].objectStore];
+    <%
+      unless RestKitGenerate.config[:primary_key].nil?
+    %>
+    mapping.primaryKeyAttribute = @"<%= RestKitGenerate.config[:primary_key] %>";
+    <%
+      end
+    %>
+    [mapping mapKeyPathsToAttributes:
+<%= mapping.join(",\n") %>
+    nil];
+    return mapping;
+}
+
+@end

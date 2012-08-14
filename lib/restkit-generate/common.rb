@@ -44,7 +44,10 @@ module RestKitGenerate
       end
 
       name = a.split(":")[0]
-      name = @@config[:model_name].downcase+"Id" if name == "id"
+      if name == "id"
+        name = @@config[:model_name].downcase+"Id"
+        @@config[:primary_key] = name
+      end
       type = a.split(":")[1]
 
       @@properties[name] = {:type => type, :original_name => original_name}

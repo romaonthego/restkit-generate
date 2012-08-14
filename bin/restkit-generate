@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 THIS_FILE = File.symlink?(__FILE__) ? File.readlink(__FILE__) : __FILE__
-lib = File.expand_path(File.dirname(THIS_FILE) + '/../lib')
-$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+$lib = File.expand_path(File.dirname(THIS_FILE) + '/../lib')
+$LOAD_PATH.unshift($lib) if File.directory?($lib) && !$LOAD_PATH.include?($lib)
 
 require 'optparse'
 require 'erb'
@@ -19,6 +19,10 @@ optparse = OptionParser.new do |opts|
 
   opts.on("-p prefix", "--[no-]prefix", "Prefix, default: Base") do |p|
     options[:prefix] = p
+  end
+
+  opts.on("-c", "--core-data", "Use core data") do |c|
+    options[:core_data] = c
   end
 
   opts.on( '-h', '--help', 'Display this screen' ) do

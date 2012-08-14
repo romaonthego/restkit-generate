@@ -6,12 +6,16 @@ module RestKitGenerate
       mapping = []
       decoders = []
       encoders = []
+      dynamic = []
       tab = "    "
+      core_data = RestKitGenerate.config[:core_data]
+
+      RestKitGenerate.properties.each{|key, value| dynamic << key }
       RestKitGenerate.properties.each{|key, value| mapping << "#{tab}@\"#{value[:original_name]}\", @\"#{key}\"" }
       RestKitGenerate.properties.each{|key, value| decoders << "#{tab}[coder encodeObject:self.#{key} forKey:@\"#{key}\"];" }
       RestKitGenerate.properties.each{|key, value| encoders << "#{tab}#{tab}self.#{key} = [coder decodeObjectForKey:@\"#{key}\"];" }
 
-      erb = ERB.new(File.read(File.join('..', 'lib', 'restkit-generate', 'nsobject.m.erb')))
+      erb = ERB.new(File.read(File.join($lib, 'restkit-generate', !core_data ? 'nsobject.m.erb' : 'nsmanagedobject.m.erb')))
       result = erb.result(binding)
 
       if RestKitGenerate.config[:verbose]

@@ -1,0 +1,16 @@
+//
+//  <%= prefix %><%= model_name %>.h
+//  Command: <%= $0 %> model <%= model_name %> <%= ARGV.join( ' ' ) %>
+//
+
+#import <Foundation/Foundation.h>
+#import <RestKit/RestKit.h>
+#import <CoreData/CoreData.h>
+
+@interface <%= prefix %><%= model_name %> : NSManagedObject
+
+<%= props.join("\n") %>
+
++ (RKManagedObjectMapping *)objectMapping;
+
+@end
