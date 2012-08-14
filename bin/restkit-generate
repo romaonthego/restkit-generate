@@ -48,5 +48,5 @@ rescue ArgumentError => error
   exit
 end
 
-RestKitGenerate::Header.make
-RestKitGenerate::MakeFile.make
+RestKitGenerate::H.new
+RestKitGenerate::M.new
