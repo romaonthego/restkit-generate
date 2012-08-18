@@ -10,7 +10,7 @@
 {
     RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[self class]];
     [mapping mapKeyPathsToAttributes:
-<%= mapping.join(",\n") %>
+<%= mapping.join(",\n") %>,
     nil];
     return mapping;
 }
