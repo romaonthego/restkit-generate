@@ -91,6 +91,10 @@ and `BaseBusiness.m`
 
 Include these files with your project and inherit a `Business` object from `BaseBusiness` where you can implement additional calls/methods. You can rebuild `BaseBusiness` anytime (in case you add/remove fields, etc.) so your main logic in the `Business` model won't be affected. Run with `--no-prefix` to remove `Base` prefix or your can set your own with command `-p PREFIX`.
 
+## CoreData
+
+You can generate CoreData models that integrate with RestKit, in order to do that add `-c` parameter.
+
 ## ARC
 `restkit-generate` outputs files that use ARC. If you are not using ARC in your Xcode project, add `-fobjc-arc` as a compiler flag.
 
