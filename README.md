@@ -31,11 +31,11 @@ It produces 2 files:
 
 @interface BaseBusiness : NSObject <NSCoding>
 
-@property (nonatomic, strong) NSNumber *businessId;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *address;
-@property (nonatomic, strong) NSDate *createdAt;
-@property (nonatomic, strong) NSDate *updatedAt;
+@property (strong, nonatomic) NSNumber *businessId;
+@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *address;
+@property (strong, nonatomic) NSDate *createdAt;
+@property (strong, nonatomic) NSDate *updatedAt;
 
 + (RKObjectMapping *)objectMapping;
 
@@ -56,12 +56,13 @@ and `BaseBusiness.m`
 + (RKObjectMapping *)objectMapping
 {
 	RKObjectMapping* mapping = [RKObjectMapping mappingForClass:[self class]];
-	[mapping mapKeyPathsToAttributes:
-	@"id", @"businessId",
-	@"title", @"title",
-	@"address", @"address",
-	@"created_at", @"createdAt",
-	@"updated_at", @"updatedAt", nil];
+	[mapping addAttributeMappingsFromDictionary:@{
+		@"id": @"businessId",
+		@"title": @"title",
+		@"address": @"address",
+		@"created_at": @"createdAt",
+		@"updated_at": @"updatedAt"
+	}];
 }
 
 - (id)initWithCoder:(NSCoder *)coder
