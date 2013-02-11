@@ -11,7 +11,7 @@ module RestKitGenerate
       core_data = RestKitGenerate.config[:core_data]
 
       RestKitGenerate.properties.each{|key, value| dynamic << key }
-      RestKitGenerate.properties.each{|key, value| mapping << "#{tab}@\"#{value[:original_name]}\", @\"#{key}\"" }
+      RestKitGenerate.properties.each{|key, value| mapping << "#{tab}#{tab}@\"#{key}\": @\"#{value[:original_name]}\"" }
       RestKitGenerate.properties.each{|key, value| decoders << "#{tab}[coder encodeObject:self.#{key} forKey:@\"#{key}\"];" }
       RestKitGenerate.properties.each{|key, value| encoders << "#{tab}#{tab}self.#{key} = [coder decodeObjectForKey:@\"#{key}\"];" }
 

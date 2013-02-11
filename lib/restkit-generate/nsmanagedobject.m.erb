@@ -8,19 +8,19 @@
 
 @dynamic <%= dynamic.join(", ") %>;
 
-+ (RKManagedObjectMapping *)objectMapping
++ (RKEntityMapping *)objectMapping
 {
-    RKManagedObjectMapping* mapping = [RKManagedObjectMapping mappingForClass:[self class] inManagedObjectStore:[RKObjectManager sharedManager].objectStore];
+    RKEntityMapping *mapping = [RKEntityMapping mappingForEntityForName:@"<%= model_name %>" inManagedObjectStore:[RKObjectManager sharedManager].managedObjectStore];
     <%
       unless RestKitGenerate.config[:primary_key].nil?
     %>
-    mapping.primaryKeyAttribute = @"<%= RestKitGenerate.config[:primary_key] %>";
+    mapping.identificationAttributes = @[ @"<%= RestKitGenerate.config[:primary_key] %>" ];
     <%
       end
     %>
-    [mapping mapKeyPathsToAttributes:
+    [mapping addAttributeMappingsFromDictionary:@{
 <%= mapping.join(",\n") %>,
-    nil];
+    }];
     return mapping;
 }
 
