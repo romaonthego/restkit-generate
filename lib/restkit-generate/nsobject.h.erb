@@ -4,8 +4,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RestKit/RestKit.h>
 
+@class RKObjectMapping;
 @interface <%= prefix %><%= model_name %> : NSObject <NSCoding>
 
 <%= props.join("\n") %>
